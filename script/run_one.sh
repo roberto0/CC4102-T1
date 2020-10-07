@@ -10,13 +10,15 @@ BINARY=$3
 OUTPATH=$4
 for N in `seq 1 1 ${ENDN}`;
 do
-	acc=0;
+	acc=0;	
+	cd ../data
+	echo  "python3 generator.py $((10**4)) $(((10**6)/N))"	
+	value=`python3 generator.py $((10**4)) $(((10**6)/N))`
+	cd ../output
 	for q in `seq 1 1 $K`
 	do
-		echo  "python3 generator.py $((10**4)) $(((10**6)/N))"
-		value=`python3 generator.py $((10**4)) $(((10**6)/N))`
-		echo  "python3 ${BINARY} P.txt T.txt"
-		value=`python3 ${BINARY} P.txt T.txt`
+		echo  "python3 ${BINARY} ../data/P.txt ../data/T.txt"
+		value=`python3 ${BINARY} ../data/P.txt ../data/T.txt`
 		echo "$value"
 		acc=$(echo "scale=10; $value+$acc" | bc)
 	done
