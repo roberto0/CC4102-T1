@@ -1,1 +1,4 @@
 data/*.dat
+data/*.txt
+src/*.dat
+src/*.txt
