@@ -34,7 +34,10 @@ def linearSearch(B,P,T):
         #    T.seek(10*k+i*B)
         #    t.append(T.read(9))
         for j in t:
-            a = linearSearchMemory(j,p)
+            #a = linearSearchMemory(j,p)
+            a = False
+            if j in p:
+                a = True
             if a != False:
                 R.append(str(j).zfill(9)+"\n")
     return R
