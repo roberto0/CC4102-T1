@@ -44,9 +44,9 @@ def binarySearch(P,T):
 
 
 start = time.time()
-pe = open("P.txt", "r")
-te = open("T.txt", "r")
-lenT = os.path.getsize("T.txt")//10
+pe = open(P, "r")
+te = open(T, "r")
+lenT = os.path.getsize(T)//10
 lenP = os.path.getsize(P)//10
 R = binarySearch(pe,te)
 pe.close()
