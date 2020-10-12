@@ -12,8 +12,8 @@ for N in `seq 0 1 ${ENDN}`;
 do
 	acc=0;	
 	cd ../data
-    echo  "python3 generator.py $((10**4)) $(((10**6)/(2**N)))"	
-    value=`python3 generator.py $((10**4)) $(((10**6)/(2**N)))`
+    echo  "python3 generator.py $((10**4)) $((32*(10**6)/(2**N)))"	
+    value=`python3 generator.py $((10**4)) $((32*(10**6)/(2**N)))`
 	cd ../output
 	for q in `seq 1 1 $K`
 	do
@@ -23,11 +23,15 @@ do
 		acc=$(echo "scale=10; $value+$acc" | bc)
 	done
 	mean=$(echo "scale=10; $acc/$K" | bc)
-    ro=$((((10**6)/(2**N))/(10**4)))
-	#echo "---> $ro	$mean"
+    #ro=$(((10**6)/(2**$N)/(10**4)))
+    a=$((32*(10**6)))
+    b=$((10**4))
+    c=$((2**N))
+    ro=$(echo "scale=10; ($a/$c)/$b" | bc)
+    echo "---> $ro	$mean"
 	echo " "
 	echo " "
-	echo -n "$ro ${mean}"        >> ${OUTPATH}
+    echo -n "($ro, ${mean})">> ${OUTPATH}
 	echo " " >> ${OUTPATH}
 done
  

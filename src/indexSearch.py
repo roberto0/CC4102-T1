@@ -46,6 +46,8 @@ def binaryNearest(p, S):
                 index = last
             else:
                 first = mean + 1
+    if last < 0:
+        return first
     return index
 
 

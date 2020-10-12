@@ -18,7 +18,7 @@ def binarySearchMemory(p, T):
     find = False
     while first<=last and not find:
         mean = (first + last)//2
-        t = T[mean] 
+        t = T[mean]
         if t == p:
             find = True
         else:
@@ -36,7 +36,7 @@ def linearSearch(B,P,T):
     for i in range(lenP):
         P.seek(10*i)
         p.append(P.read(9))
-    p.sort()
+    #p.sort()
     lastT = lenT
     #B2 = B//10
     for i in range(0,lastT//B):
@@ -45,8 +45,8 @@ def linearSearch(B,P,T):
         #for k in range(B2):
         #    T.seek(10*k+i*B)
         #    t.append(T.read(9))
-        for j in t:
-            a = binarySearchMemory(j,p)
+        for j in p:
+            a = binarySearchMemory(j,t)
             if a != False:
                 R.append(str(j).zfill(9)+"\n")
     return R
